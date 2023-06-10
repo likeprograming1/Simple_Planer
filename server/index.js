@@ -1,12 +1,14 @@
 const express = require("express");
 const cookieparser = require("cookie-parser");
+const bodyParser = require("body-parser");
 const app = express();
 const Rindex = require('./controller/index'); 
 const cors = require("cors");
 require("dotenv").config();
 
 // 기초세팅
-app.use(express.json());
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 app.use(cookieparser());
 app.use(cors({
   origin: "http://localhost:3000",
@@ -15,7 +17,7 @@ app.use(cors({
 }));
 
 // 라우팅
-app.use('/main', Rindex);  
+app.use('/', Rindex);  
 
 app.listen(process.env.PORT, () => {
   console.log(`server is on ${process.env.PORT}`);
