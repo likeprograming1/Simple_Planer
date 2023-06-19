@@ -1,8 +1,27 @@
 import styled from "styled-components";
 
-const Box = styled.main`
-  height: 100vh;
-  border: 1px solid red;
+export const Box = styled.main`
+  background-color: var(--White);
 `;
 
-export default Box;
+export const BoxSection = styled.section`
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  .imgs {
+    .firstbox {
+      padding: 100px 0px 235px 0px;
+    }
+    .secondbox {
+      display: flex;
+      justify-content: center;
+      padding: 0px 0px 235px 0px;
+    }
+    .thirdbox {
+      display: flex;
+      justify-content: end;
+      padding: 0px 0px 100px 0px;
+    }
+  }
+`;

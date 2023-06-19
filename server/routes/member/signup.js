@@ -6,11 +6,12 @@ const signup = (req, res) => {
 
     if(user_id !== undefined && pwd !== undefined && user_name !== undefined){
       db.query("insert into member(user_id, pwd, user_name, point, email) values (?,?,?,?,?)", [user_id, pwd, user_name, 0, email]);
+
+      return res.status(200).json("생성완료");
     }
-    
-    res.status(200).json("생성완료");
+
   } catch (error) {
-    res.status(500).json(error);
+    return res.status(500).json(error);
   } 
 
 };
