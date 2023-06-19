@@ -28,4 +28,5 @@
 
 ### 🔑ERD
 
-- [https://www.erdcloud.com/d/e2hXBLMDwSEKWKPmt](https://www.erdcloud.com/d/e2hXBLMDwSEKWKPmt)
+<img width="931" alt="스크린샷 2023-06-19 오후 9 42 46" src="https://github.com/likeprograming1/Simple_Planer/assets/89185550/b001e225-f22e-4848-a64f-75d43a5a49fa">
+
