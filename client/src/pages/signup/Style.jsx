@@ -13,6 +13,27 @@ export const Box = styled.section`
     padding: 50px 40px;
     border-radius: 10px;
     border: 1px solid var(--Black);
+    .IdBox {
+      position: relative;
+      display: flex;
+      align-items: center;
+      .IdCheckBtn {
+        position: absolute;
+        right: 0px;
+        margin-bottom: 15px;
+        padding: 5px;
+        border-radius: 20px;
+        border: none;
+        background-color: var(--Black);
+        color: var(--White);
+        :hover {
+          background-color: var(--White);
+          color: var(--Black);
+          border: 1px solid var(--Black);
+          cursor: pointer;
+        }
+      }
+    }
     .logo-img {
       margin-bottom: 40px;
     }
@@ -49,6 +70,11 @@ export const Box = styled.section`
         background-color: var(--White);
         color: var(--Black);
         border: 1px solid var(--Black);
+      }
+      :disabled {
+        background-color: #eee;
+        color: #333;
+        border: #333;
       }
     }
     .Oauth {

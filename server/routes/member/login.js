@@ -45,7 +45,7 @@ const login = (req, res) => {
 
     } else {
       console.log('로그인 실패')
-      return res.status(403).json("Not Authorized");
+      return res.status(403).send({message : "아이디나 비밀번호가 다릅니다."});
     }
   })
 

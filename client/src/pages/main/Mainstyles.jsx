@@ -11,7 +11,23 @@ export const BoxSection = styled.section`
   flex-direction: column;
   .imgs {
     .firstbox {
+      display: flex;
       padding: 100px 0px 235px 0px;
+      .board-go {
+        margin: auto;
+        text-decoration: none;
+        padding: 30px;
+        border-radius: 30px;
+        background-color: var(--Black);
+        font-size: var(--font24);
+        color: var(--White);
+        :hover {
+          border: 1px solid var(--Black);
+          background-color: var(--White);
+          font-size: var(--font24);
+          color: var(--Black);
+        }
+      }
     }
     .secondbox {
       display: flex;

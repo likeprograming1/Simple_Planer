@@ -8,18 +8,13 @@ const loginSlice = createSlice({
     AccessToken : null,
   },
   reducers : {
-    login(state) {
-      state.isLogin = true;
-    },
   },
   extraReducers : {
     [LoginAsync.fulfilled] : (state, action) => {
-      state.AccessToken = action.payload;
-      state.isLogin = true;
-      return state;
-    },
-    [LoginAsync.pending] : (state) => {
-      state.isLogin = true;
+      if(action.payload !== undefined){
+        state.isLogin = true;
+        state.AccessToken = action.payload;
+      }
     },
     [LogoutAsync.fulfilled] : (state) => {
       state.AccessToken = null;
@@ -27,5 +22,5 @@ const loginSlice = createSlice({
     }
   }
 });
-export const loginAction = loginSlice.actions;
+export const {logincheck} = loginSlice.actions;
 export default loginSlice.reducer;

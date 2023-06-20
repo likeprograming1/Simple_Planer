@@ -26,6 +26,8 @@ export const Box = styled.header`
         height: 40px;
         color: var(--White);
         font-size: var(--font20);
+        cursor: pointer;
+        margin: 0px 10px;
       }
     }
   }

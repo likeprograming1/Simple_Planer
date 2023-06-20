@@ -7,6 +7,7 @@ import styled from "styled-components";
 import FindId from "./pages/login/findId/FindId.jsx";
 import FindPw from "./pages/login/findPw/FindPw.jsx";
 import SignUp from "./pages/signup/SignUp.jsx";
+import Mboard from "./pages/board/Mboard.js";
 const BodyBox = styled.div`
   display: flex;
   flex-direction: column;
@@ -38,6 +39,7 @@ function App() {
         <Route path="/login/findId" element={<FindId/>} />
         <Route path="/login/findPw" element={<FindPw />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/board" element={<Mboard />} />
       </Routes>
     </main>
     <Footer />
