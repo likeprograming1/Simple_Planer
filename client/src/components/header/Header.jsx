@@ -24,7 +24,7 @@ export const Header = () => {
 
           <nav className="box-nav">
             <img src={alert} alt="알림 이미지" className="alert"></img>
-            <Link to="/login" className="header-btn">
+            <Link to="#" className="header-btn">
               shop
             </Link>
             <Link to="#" className="header-btn">

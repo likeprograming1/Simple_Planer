@@ -17,6 +17,7 @@ const Login = () => {
     if (id !== undefined && pw !== undefined) {
       dispatch(LoginAsync(data)).then((res) => {
         if (res.payload !== undefined) {
+          alert("로그인 되었습니다.");
           navigate("/");
         }
       });

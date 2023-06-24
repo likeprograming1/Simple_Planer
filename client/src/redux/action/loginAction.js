@@ -10,6 +10,7 @@ export const LoginAsync = createAsyncThunk('login', data => {
     .then((res) => {
       axios.defaults.headers.common.token = res.headers.authorization;  
       const access_token = res.headers.authorization.split(' ')[1]; 
+      sessionStorage.setItem("access_token", res.headers.authorization.split(' ')[1]);
       return access_token;
   })
   .catch((err) => { 
@@ -62,4 +63,34 @@ export const IdSearchAsync = createAsyncThunk("loginSearch", (data) => {
     return err.response.status;
   })
 
+})
+
+export const ReAccesstoken = createAsyncThunk("token", async () => {
+  return await axios.post("/refresh")
+  .then(res => {console.log(res)})
+  .catch((err) => {console.log(err)});
+})
+
+export const Reloading = createAsyncThunk("reload", async (data) => {
+  return 
+})
+
+export const Retoken = createAsyncThunk("retoken", async () => {
+  
+  return axios.post('/refresh')
+    .then((res) => {
+      axios.defaults.headers.common.token = res.headers.authorization;  
+      const access_token = res.headers.authorization.split(' ')[1]; 
+      sessionStorage.setItem("access_token", res.headers.authorization.split(' ')[1]);
+      return access_token;
+  })
+  .catch((err) => { 
+    if(err.response.status){
+      if(err.response.status === 404){
+        alert("로그인 시간이 만료되어 다시 로그인 해주세요");
+      }else {
+        alert(err);
+      }
+    }
+  });
 })

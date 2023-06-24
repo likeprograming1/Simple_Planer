@@ -2,11 +2,18 @@ import { Box, BoxSection } from "./Mainstyles.jsx";
 import mainfirst from "../../images/mainfirst.svg";
 import mainsecond from "../../images/mainsecond.svg";
 import mainthird from "../../images/mainthird.svg";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { reloading_login } from "../../redux/reducer/loginSlice.js";
 
 const MainDisplay = () => {
   const IsLogin = useSelector((state) => state.login.isLogin);
+  const accessToken = sessionStorage.getItem("access_token");
+  const dispatch = useDispatch();
+
+  if (accessToken) {
+    dispatch(reloading_login());
+  }
 
   return (
     <Box>

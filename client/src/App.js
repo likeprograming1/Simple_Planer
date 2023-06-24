@@ -8,6 +8,9 @@ import FindId from "./pages/login/findId/FindId.jsx";
 import FindPw from "./pages/login/findPw/FindPw.jsx";
 import SignUp from "./pages/signup/SignUp.jsx";
 import Mboard from "./pages/board/Mboard.js";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Retoken } from "./redux/action/loginAction.js";
 const BodyBox = styled.div`
   display: flex;
   flex-direction: column;
@@ -29,6 +32,17 @@ const BodyBox = styled.div`
 `;
 
 function App() {
+  const ac = sessionStorage.getItem("access_token");
+  const dispatch = useDispatch();
+
+  useEffect(()=>{
+    if(ac){
+      setInterval(()=>{
+        dispatch(Retoken());
+      }, 1400000);
+    }
+  },[])
+  
   return (
     <BodyBox>
     <Header/>

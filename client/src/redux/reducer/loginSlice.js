@@ -8,6 +8,9 @@ const loginSlice = createSlice({
     AccessToken : null,
   },
   reducers : {
+    reloading_login: (state) => {
+      state.isLogin = true;
+    }
   },
   extraReducers : {
     [LoginAsync.fulfilled] : (state, action) => {
@@ -22,5 +25,5 @@ const loginSlice = createSlice({
     }
   }
 });
-export const {logincheck} = loginSlice.actions;
+export const {reloading_login} = loginSlice.actions;
 export default loginSlice.reducer;
