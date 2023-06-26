@@ -4,14 +4,12 @@ require("dotenv").config();
 
 const login = (req, res) => {
   const {user_id, pwd} = req.body;
-  console.log(user_id, pwd);
   
   const user_Info = db.query("select * from member", (err, rows, fields) => {
 
     const user_In = rows.filter(item => {
       return item.user_id === user_id && item.pwd === pwd;
     })[0];
-    console.log(user_In);
 
     if(user_In !== undefined){
       
@@ -21,7 +19,7 @@ const login = (req, res) => {
         username: user_In.user_name,
         point: user_In.point
       }, process.env.ACCESS_SECRET, {
-        expiresIn : '1m',
+        expiresIn : '30m',
         issuer : "About Tech",
       })
 

@@ -17,6 +17,9 @@ const BoardSection = styled.section`
       justify-content: center;
     }
     .Write{
+      display: flex;
+      align-items: center;
+      justify-content: center;
       width: 100px;
       height: 40px;
       border: none;
@@ -24,6 +27,7 @@ const BoardSection = styled.section`
       background-color: var(--Black);
       color: var(--White);
       margin-left: 10px;
+      text-decoration: none;
       :hover{
         cursor: pointer;
         border: 1px solid var(--Black);

@@ -1,7 +1,8 @@
 const express = require("express");
 const cookieparser = require("cookie-parser");
 const app = express();
-const Rindex = require('./controller/index'); 
+const Rindex = require('./controller/log'); 
+const Rboard = require("./controller/board");
 const cors = require("cors");
 const login = require("./routes/member/login");
 require("dotenv").config();
@@ -18,6 +19,7 @@ app.use(cors({
 
 // 라우팅
 app.use('/', Rindex);  
+app.use("/board", Rboard);
 
 app.listen(process.env.PORT, () => {
   console.log(`server is on ${process.env.PORT}`);

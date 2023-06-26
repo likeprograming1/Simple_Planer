@@ -1,12 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { MyBoarData, boarData, userData } from "../action/boardAction";
+import { DeleteBoard, MyBoarData, WriteBoard, boarData, userData } from "../action/boardAction";
 
 const boardSlice = createSlice({
   name : "board",
   initialState : {
     userName : "",
     data : [],
-    modal : false
+    modal : false,
+    ActionState : 0
   },
   reducers : {
     Ismodal : (state) => {
@@ -22,6 +23,12 @@ const boardSlice = createSlice({
     },
     [MyBoarData.fulfilled] : (state, action) => {
       state.data = action.payload;
+    },
+    [DeleteBoard.fulfilled] : (state, action) => {
+      state.ActionState = action.payload;
+    },
+    [WriteBoard.fulfilled] : (state, action) => {
+      state.ActionState = action.payload;
     }
   }
 })

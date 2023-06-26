@@ -1,11 +1,11 @@
 import Modal from "./style";
 
-const Deleltemodal = ({navigate, dispatch, onclose, ondelete}) => {
+const Deleltemodal = ({ board, dispatch, onclose, ondelete}) => {
 
   const handleDelete = () => {
     ondelete();
     dispatch();
-    navigate();
+    board();
   }
 
   const handleCancle = () => {
@@ -14,8 +14,10 @@ const Deleltemodal = ({navigate, dispatch, onclose, ondelete}) => {
 
   return (<Modal>
     <h1>삭제 하시겠습니까?</h1>
-    <button onClick={()=>{handleDelete()}}>예</button>
-    <button onClick={()=>{handleCancle()}}>아니요</button>
+    <div className="btn-box">
+      <button onClick={()=>{handleDelete()}}>예</button>
+      <button onClick={()=>{handleCancle()}}>아니요</button>
+    </div>
   </Modal>)
 }
 

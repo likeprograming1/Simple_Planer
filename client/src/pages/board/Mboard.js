@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import BoardSection from "./style";
 import { useDispatch, useSelector } from "react-redux";
 import { DeleteBoard, MyBoarData, boarData, userData } from "../../redux/action/boardAction";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import getDayMinuteCounter from "../../components/time/time";
 import update from "../../images/update.png";
 import trash from "../../images/trash.png";
@@ -11,20 +11,23 @@ import Deletemodal from "../../components/modal/deletemodal";
 
 const Mboard = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const [abled, setAbled] = useState(1);
   const [Id, setId] = useState(0);
+  const [board, setBoard] = useState(false);
   const access_token = sessionStorage.getItem("access_token");
   const user_name = useSelector((state) => state.board.userName);
   const boardData = useSelector((state) => state.board.data);
   const modal = useSelector(state => state.board.modal);
-
-  console.log(modal);
-
+  
   useEffect(()=>{
     dispatch(userData(access_token));
     dispatch(boarData(access_token));
   },[]);
+  
+  if(board){
+    dispatch(MyBoarData(access_token));
+    setBoard(false)
+  }
 
   const handleTotalboard = (token) => {
     dispatch(boarData(token));
@@ -40,21 +43,22 @@ const Mboard = () => {
     dispatch(Ismodal());
   }
 
+
   return <BoardSection>
     {modal ? <Deletemodal 
-    navigate = {()=>{window.location.href = '/board';}}
+    board={()=>{setBoard(true)}}
     dispatch={()=>{dispatch(Ismodal());}}
     ondelete={()=>{dispatch(DeleteBoard(Id))}}
     onclose={() => {dispatch(Ismodal());}}
     ></Deletemodal> : null}
     <div className="head">
       <h1 className="head_title">{user_name}님 오신걸 환영합니다.</h1>
-      <button className="Write">Write</button>
+      <Link to="/board/write" className="Write">Write</Link>
     </div>
     <div className="box">
       <div className="boardbox">
         <button className={abled ? "leftboard able" : "leftboard disable"} 
-        onClick={()=>{handleTotalboard(access_token)}}>전체 게시판</button>
+        onClick={()=>{handleTotalboard(access_token)}} >전체 게시판</button>
         <button className={abled ? "rightboard disable" : "rightboard able"} 
         onClick={()=>{handleMyboard(access_token)}}>내가 작성한 게시판</button>
       </div>

@@ -41,8 +41,21 @@ export const DeleteBoard = createAsyncThunk("deleteboard",(id)=>{
   return axios.post("/board/delete", {
     board_id : id
   }).then((res)=>{
-    console.log(res);
+    return res.status;
   }).catch((err)=>{
     console.log(err);
+  })
+})
+
+export const WriteBoard = createAsyncThunk("writeboard", async (data) => {
+  return await axios.post("/board/write", {
+    user_name : data[0], 
+    board_title : data[1], 
+    board_content : data[2]
+  }).then((res) => {
+    return res.status;
+  }).catch((err) => {
+    alert(err.response);
+    return err.response.status;
   })
 })

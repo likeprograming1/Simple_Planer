@@ -5,10 +5,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { LogoutAsync } from "../../redux/action/loginAction";
 import user_profile from "../../images/user_profile.svg";
 import alert from "../../images/alert.png";
+import { useEffect } from "react";
+import { reloading_login } from "../../redux/reducer/loginSlice";
 
 export const Header = () => {
   const IsLogin = useSelector((state) => state.login.isLogin);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (sessionStorage.getItem("access_token")) {
+      dispatch(reloading_login());
+    }
+  }, []);
 
   const handleLogout = () => {
     dispatch(LogoutAsync());

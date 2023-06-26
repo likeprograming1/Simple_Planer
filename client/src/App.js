@@ -9,8 +9,9 @@ import FindPw from "./pages/login/findPw/FindPw.jsx";
 import SignUp from "./pages/signup/SignUp.jsx";
 import Mboard from "./pages/board/Mboard.js";
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Retoken } from "./redux/action/loginAction.js";
+import Write from "./pages/board/Write.js";
 const BodyBox = styled.div`
   display: flex;
   flex-direction: column;
@@ -54,6 +55,7 @@ function App() {
         <Route path="/login/findPw" element={<FindPw />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/board" element={<Mboard />} />
+        <Route path="/board/write" element={<Write />} />
       </Routes>
     </main>
     <Footer />
